@@ -1,13 +1,18 @@
 <?php
+use Bramus\Router\Router;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$articles = [
-    'premier article',
-    'deuxieme article',
-    'troisieme article'
-];
+$router = new Router;
 
-var_dump($articles);
+$router->get('/hello', function() {
+    echo "Hello world";
+});
 
-dump($articles);
+$router->get('/articles/{id}', function ($id) {
+    echo "voici l'article" . $id;
+});
+
+$router->run();
+
+
